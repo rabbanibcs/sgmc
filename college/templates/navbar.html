@@ -1,0 +1,85 @@
+
+<nav class="navbar nav nav-fill navbar-expand-md bg-dark p-0 ">
+  <div class="navbar-brand d-flex ">
+    <a class="nav-link " href="{% url 'home' %}">Home</a>
+    {% if user.is_authenticated %}
+    {% if user.is_teacher %}
+        <a class="nav-link profile " href="{% url 'teacher_profile' user.id %}"><img width="40" height="40" src="{{user.teacher.picture.url}}" class="img"></a>
+    {% else %}
+        <a class="nav-link profile" href="{% url 'student_profile' user.id %}"><img width="40" height="40" src="{{user.student.picture.url}}" class="img"></a>
+    {% endif %}
+  {% endif %}
+  </div>
+   
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+<!--About College-->
+      <div class="nav-item dropdown" >
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">About College</a>
+        <ul class="dropdown-menu bg-light text-primary full-width">
+        <li><a class="dropdown-item text-muted " href="#">College History</a></li>
+        <li><a class="dropdown-item text-muted " href="#">Vision</a></li>
+        <li><a class="dropdown-item text-muted " href="#">Mission</a></li>
+        <li><a class="dropdown-item text-muted" href="#">Facilities</a></li>
+        <li><a class="dropdown-item text-muted " href="#">Academics</a></li>
+        </ul>
+      </div>
+
+<!--    departments-->
+
+      <div class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Departments</a>
+        <ul class="dropdown-menu bg-light text-primary full-width">
+
+          {% for department in departments %}
+          <li><a class="dropdown-item text-muted " href="{% url 'department' department.id %}">{{department}}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+
+<!--students-->
+      <div class="nav-item ">
+        <a class="nav-link" href="{% url 'students_list' %}">Students <span class="sr-only">(current)</span></a>
+      </div>
+<!--      log in/out-->
+      {% if not user.is_authenticated %}
+<!--      in-->
+      <div class="nav-item">
+        <a class="nav-link" href="{% url 'login' %}">Log in</a>
+      </div>
+      {% else %}
+<!--     log out-->
+      <div class="nav-item">
+        <a class="nav-link" href="{% url 'logout' %}">Log out</a>
+      </div>
+
+        {% if user.is_teacher %}
+<!--   teacher_image-->
+          {% if user.teacher.id == teacher.id %}
+            <div class="nav-item">
+              <a class="nav-link" href="{% url 'teacher_profile_edit' user.id %}">Edit Profile</a>
+            </div>
+          {% endif %}
+          <div class="nav-item">
+            <a class="nav-link profile-img" href="{% url 'teacher_profile' user.id %}"><img width="40" height="40" src="{{user.teacher.picture.url}}" class="img"></a>
+          </div>
+        {% else %}
+<!-- student_image-->
+            {% comment %} <div class="nav-item">
+              <a class="nav-link" href="{% url 'student_profile_edit' user.id %}">Edit Profile</a>
+            </div> {% endcomment %}
+          <div class="nav-item">
+            <a class="nav-link profile-img" href="{% url 'student_profile' user.id %}"><img width="40" height="40" src="{{user.student.picture.url}}" class="img"></a>
+
+          </div>
+        {% endif %}
+
+      {% endif %}
+
+
+  </div>
+</nav>
+

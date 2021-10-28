@@ -1,0 +1,123 @@
+
+/college.views.home      home
+/<path> django.views.static.serve
+/admin/ django.contrib.admin.sites.index        admin:index
+/admin/<app_label>/     django.contrib.admin.sites.app_index    admin:app_list
+/admin/<url>    django.contrib.admin.sites.catch_all_view
+/admin/auth/group/      django.contrib.admin.options.changelist_view    admin:auth_group_changelist
+/admin/auth/group/<path:object_id>/     django.views.generic.base.RedirectView
+/admin/auth/group/<path:object_id>/change/      django.contrib.admin.options.change_view        admin:auth_group_change
+/admin/auth/group/<path:object_id>/delete/      django.contrib.admin.options.delete_view        admin:auth_group_delete
+/admin/auth/group/<path:object_id>/history/     django.contrib.admin.options.history_view       admin:auth_group_history
+/admin/auth/group/add/  django.contrib.admin.options.add_view   admin:auth_group_add
+/admin/autocomplete/    django.contrib.admin.sites.autocomplete_view    admin:autocomplete
+/admin/department/department/   django.contrib.admin.options.changelist_view    admin:department_department_changelist
+/admin/department/department/<path:object_id>/  django.views.generic.base.RedirectView
+/admin/department/department/<path:object_id>/change/   django.contrib.admin.options.change_view        admin:department_department_change
+/admin/department/department/<path:object_id>/delete/   django.contrib.admin.options.delete_view        admin:department_department_delete
+/admin/department/department/<path:object_id>/history/  django.contrib.admin.options.history_view       admin:department_department_history
+/admin/department/department/add/       django.contrib.admin.options.add_view   admin:department_department_add
+/admin/department/subjectcode/  django.contrib.admin.options.changelist_view    admin:department_subjectcode_changelist
+/admin/department/subjectcode/<path:object_id>/ django.views.generic.base.RedirectView
+/admin/department/subjectcode/<path:object_id>/change/  django.contrib.admin.options.change_view        admin:department_subjectcode_change
+/admin/department/subjectcode/<path:object_id>/delete/  django.contrib.admin.options.delete_view        admin:department_subjectcode_delete
+/admin/department/subjectcode/<path:object_id>/history/ django.contrib.admin.options.history_view       admin:department_subjectcode_history
+/admin/department/subjectcode/add/      django.contrib.admin.options.add_view   admin:department_subjectcode_add
+/admin/exam/examination/        django.contrib.admin.options.changelist_view    admin:exam_examination_changelist
+/admin/exam/examination/<path:object_id>/       django.views.generic.base.RedirectView
+/admin/exam/examination/<path:object_id>/change/        django.contrib.admin.options.change_view        admin:exam_examination_change
+/admin/exam/examination/<path:object_id>/delete/        django.contrib.admin.options.delete_view        admin:exam_examination_delete
+/admin/exam/examination/<path:object_id>/history/       django.contrib.admin.options.history_view       admin:exam_examination_history
+/admin/exam/examination/add/    django.contrib.admin.options.add_view   admin:exam_examination_add
+/admin/exam/grade/      django.contrib.admin.options.changelist_view    admin:exam_grade_changelist
+/admin/exam/grade/<path:object_id>/     django.views.generic.base.RedirectView
+/admin/exam/grade/<path:object_id>/change/      django.contrib.admin.options.change_view        admin:exam_grade_change
+/admin/exam/grade/<path:object_id>/delete/      django.contrib.admin.options.delete_view        admin:exam_grade_delete
+/admin/exam/grade/<path:object_id>/history/     django.contrib.admin.options.history_view       admin:exam_grade_history
+/admin/exam/grade/add/  django.contrib.admin.options.add_view   admin:exam_grade_add
+/admin/gallery/carousel/        django.contrib.admin.options.changelist_view    admin:gallery_carousel_changelist
+/admin/gallery/carousel/<path:object_id>/       django.views.generic.base.RedirectView
+/admin/gallery/carousel/<path:object_id>/change/        django.contrib.admin.options.change_view        admin:gallery_carousel_change
+/admin/gallery/carousel/<path:object_id>/delete/        django.contrib.admin.options.delete_view        admin:gallery_carousel_delete
+/admin/gallery/carousel/<path:object_id>/history/       django.contrib.admin.options.history_view       admin:gallery_carousel_history
+/admin/gallery/carousel/add/    django.contrib.admin.options.add_view   admin:gallery_carousel_add
+/admin/gallery/gallery/ django.contrib.admin.options.changelist_view    admin:gallery_gallery_changelist
+/admin/gallery/gallery/<path:object_id>/        django.views.generic.base.RedirectView
+/admin/gallery/gallery/<path:object_id>/change/ django.contrib.admin.options.change_view        admin:gallery_gallery_change
+/admin/gallery/gallery/<path:object_id>/delete/ django.contrib.admin.options.delete_view        admin:gallery_gallery_delete
+/admin/gallery/gallery/<path:object_id>/history/        django.contrib.admin.options.history_view       admin:gallery_gallery_history
+/admin/gallery/gallery/add/     django.contrib.admin.options.add_view   admin:gallery_gallery_add
+/admin/jsi18n/  django.contrib.admin.sites.i18n_javascript      admin:jsi18n
+/admin/login/   django.contrib.admin.sites.login        admin:login
+/admin/logout/  django.contrib.admin.sites.logout       admin:logout
+/admin/password_change/ django.contrib.admin.sites.password_change      admin:password_change
+/admin/password_change/done/    django.contrib.admin.sites.password_change_done admin:password_change_done
+/admin/r/<int:content_type_id>/<path:object_id>/        django.contrib.contenttypes.views.shortcut      admin:view_on_site
+/admin/student/fileupload/      django.contrib.admin.options.changelist_view    admin:student_fileupload_changelist
+/admin/student/fileupload/<path:object_id>/     django.views.generic.base.RedirectView
+/admin/student/fileupload/<path:object_id>/change/      django.contrib.admin.options.change_view        admin:student_fileupload_change
+/admin/student/fileupload/<path:object_id>/delete/      django.contrib.admin.options.delete_view        admin:student_fileupload_delete
+/admin/student/fileupload/<path:object_id>/history/     django.contrib.admin.options.history_view       admin:student_fileupload_history
+/admin/student/fileupload/add/  django.contrib.admin.options.add_view   admin:student_fileupload_add
+/admin/student/student/ django.contrib.admin.options.changelist_view    admin:student_student_changelist
+/admin/student/student/<path:object_id>/        django.views.generic.base.RedirectView
+/admin/student/student/<path:object_id>/change/ django.contrib.admin.options.change_view        admin:student_student_change
+/admin/student/student/<path:object_id>/delete/ django.contrib.admin.options.delete_view        admin:student_student_delete
+/admin/student/student/<path:object_id>/history/        django.contrib.admin.options.history_view       admin:student_student_history
+/admin/student/student/add/     django.contrib.admin.options.add_view   admin:student_student_add
+/admin/student/stuinfo/ import_export.admin.changelist_view     admin:student_stuinfo_changelist
+/admin/student/stuinfo/<path:object_id>/        django.views.generic.base.RedirectView
+/admin/student/stuinfo/<path:object_id>/change/ django.contrib.admin.options.change_view        admin:student_stuinfo_change
+/admin/student/stuinfo/<path:object_id>/delete/ django.contrib.admin.options.delete_view        admin:student_stuinfo_delete
+/admin/student/stuinfo/<path:object_id>/history/        django.contrib.admin.options.history_view       admin:student_stuinfo_history
+/admin/student/stuinfo/add/     django.contrib.admin.options.add_view   admin:student_stuinfo_add
+/admin/student/stuinfo/import/  import_export.admin.import_action       admin:student_stuinfo_import
+/admin/student/stuinfo/process_import/  import_export.admin.process_import      admin:student_stuinfo_process_import
+/admin/student/subjectsforbusinessstudies/      django.contrib.admin.options.changelist_view    admin:student_subjectsforbusinessstudies_changelist
+/admin/student/subjectsforbusinessstudies/<path:object_id>/     django.views.generic.base.RedirectView
+/admin/student/subjectsforbusinessstudies/<path:object_id>/change/      django.contrib.admin.options.change_view
+        admin:student_subjectsforbusinessstudies_change
+/admin/student/subjectsforbusinessstudies/<path:object_id>/delete/      django.contrib.admin.options.delete_view
+        admin:student_subjectsforbusinessstudies_delete
+/admin/student/subjectsforbusinessstudies/<path:object_id>/history/     django.contrib.admin.options.history_view
+        admin:student_subjectsforbusinessstudies_history
+/admin/student/subjectsforbusinessstudies/add/  django.contrib.admin.options.add_view   admin:student_subjectsforbusinessstudies_add
+/admin/student/subjectsforhumanities/   django.contrib.admin.options.changelist_view    admin:student_subjectsforhumanities_changelist
+/admin/student/subjectsforhumanities/<path:object_id>/  django.views.generic.base.RedirectView
+/admin/student/subjectsforhumanities/<path:object_id>/change/   django.contrib.admin.options.change_view        admin:student_subjectsforhumanities_change
+/admin/student/subjectsforhumanities/<path:object_id>/delete/   django.contrib.admin.options.delete_view        admin:student_subjectsforhumanities_delete
+/admin/student/subjectsforhumanities/<path:object_id>/history/  django.contrib.admin.options.history_view       admin:student_subjectsforhumanities_history
+/admin/student/subjectsforhumanities/add/       django.contrib.admin.options.add_view   admin:student_subjectsforhumanities_add
+/admin/student/subjectsforscience/      django.contrib.admin.options.changelist_view    admin:student_subjectsforscience_changelist
+/admin/student/subjectsforscience/<path:object_id>/     django.views.generic.base.RedirectView
+/admin/student/subjectsforscience/<path:object_id>/change/      django.contrib.admin.options.change_view        admin:student_subjectsforscience_change
+/admin/student/subjectsforscience/<path:object_id>/delete/      django.contrib.admin.options.delete_view        admin:student_subjectsforscience_delete
+/admin/student/subjectsforscience/<path:object_id>/history/     django.contrib.admin.options.history_view       admin:student_subjectsforscience_history
+/admin/student/subjectsforscience/add/  django.contrib.admin.options.add_view   admin:student_subjectsforscience_add
+/admin/teacher/teacher/ django.contrib.admin.options.changelist_view    admin:teacher_teacher_changelist
+/admin/teacher/teacher/<path:object_id>/        django.views.generic.base.RedirectView
+/admin/teacher/teacher/<path:object_id>/change/ django.contrib.admin.options.change_view        admin:teacher_teacher_change
+/admin/teacher/teacher/<path:object_id>/delete/ django.contrib.admin.options.delete_view        admin:teacher_teacher_delete
+/admin/teacher/teacher/<path:object_id>/history/        django.contrib.admin.options.history_view       admin:teacher_teacher_history
+/admin/teacher/teacher/add/     django.contrib.admin.options.add_view   admin:teacher_teacher_add
+/admin/user/user/       django.contrib.admin.options.changelist_view    admin:user_user_changelist
+/admin/user/user/<id>/password/ django.contrib.auth.admin.user_change_password  admin:auth_user_password_change
+/admin/user/user/<path:object_id>/      django.views.generic.base.RedirectView
+/admin/user/user/<path:object_id>/change/       django.contrib.admin.options.change_view        admin:user_user_change
+/admin/user/user/<path:object_id>/delete/       django.contrib.admin.options.delete_view        admin:user_user_delete
+/admin/user/user/<path:object_id>/history/      django.contrib.admin.options.history_view       admin:user_user_history
+/admin/user/user/add/   django.contrib.auth.admin.add_view      admin:user_user_add
+/department/<int:pk>/   department.views.department     department
+/exam/<int:roll>/<str:year>/<str:term>/ exam.views.student_result       student_result
+/exam/<str:sub>/<int:year>/<str:term>/  exam.views.all_students_result  all_students_result
+/exam/<str:sub>/<str:term>/<int:year>/  exam.views.marks_input  marks
+/exam/<str:sub>/<str:term>/<int:year>/<int:roll>/       exam.views.marks_input  marks-input
+/login/ django.contrib.auth.views.LoginView     login
+/logout/        django.contrib.auth.views.LogoutView    logout
+/student/       student.views.students_list     students_list
+/student/<int:pk>/      student.views.student_profile   student_profile
+/student/<int:pk>/edit-profile/ student.views.student_profile_edit      student_profile_edit
+/student/<int:pk>/edit-subjects/        student.views.student_subjects_edit     student_subjects_edit
+/student/upload/        student.views.upload_file
+/teacher/<int:pk>/      teacher.views.teacher_profile   teacher_profile
+/teacher/<int:pk>/edit-profile/ teacher.views.teacher_profile_edit      teacher_profile_edit

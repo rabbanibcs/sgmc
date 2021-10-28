@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+  {% block content %}
+    <div class='row justify-content-center'>
+     
+     <div class="col-md-10">
+      <h3 class="text-center font-weight-bold"> {{exam.get_term_display|capfirst}} Examination-{{exam.year}}</h3>
+      <h4 class="text-center font-weight-bold">Student's Name: {{student.user.name|capfirst}}</h4>
+      <h5 class="text-center font-weight-bold">Roll: {{student.class_roll}}</h5>
+
+    <div class="table-responsive">
+      <table class="table">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Subject</th>
+          <th scope="col">CQ Marks</th>
+          <th scope="col">MCQ Marks</th>
+          <th scope="col">Practical Marks</th>
+          <th scope="col">Total Marks</th>
+          <th scope="col">Grade</th>
+        </tr>
+          {% for result in results %}
+            <tr>
+              <th scope="row">{{forloop.counter}}</th>
+              <td class="font-weight-bold">{{result.subject.subject}}</td>
+              <td >{{result.cq_marks}}</td>
+              <td >{{result.mcq_marks}}</td>
+              <td >{{result.practical_marks}}</td>
+              <td >{{result.total_marks}}</td>
+              <td >{{result.grade}}</td>
+            </tr>
+          {% endfor %}
+      </table>
+    </div>
+
+     </div>
+        
+    </div>
+ {% endblock content %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+  {% block content %}
+    
+
+    <div class="row">
+        
+
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <div class="infoForm">
+                <form id="infoForm" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input id="user_name" hidden value="{{user.name|capfirst}}">
+                    {{form|crispy}}
+                    <p align="center" >
+                        <input class="btn btn-secondary btn-lg btn-block" value="Submit Profile" type="submit">
+                    </p>
+            </form>
+            </div>
+
+        </div>
+        <div class="col-sm-3"><div onclick="this.innerHTML = Date()">The time is?</div></div>
+    </div>
+
+ {% endblock content %}
+ {% block script %}
+
+    <script>
+        name=document.getElementById('user_name').value;
+        document.getElementById('id_name').value=name;
+        //alert(name);
+    </script>
+ 
+ {% endblock %}
+
+

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="row">
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-6 mt-3 ">
+            <form method="POST" action="{% url 'marks' department.name examination.term examination.year %}">
+            {% csrf_token %}
+            <table class="table table-hover">
+                <tr><td>Year of Examination:</td><td><input  class="form-control" value={{examination.year}} type="number"></td></tr>
+                <tr><td>Term:</td><td><input  class="form-control" value="{{examination.get_term_display|capfirst }}" type="text"></td></tr>
+                <tr><td>Student's name:</td><td><input  class="form-control" value="{{student.user.name}}" type="text"></td></tr>
+                <tr><td>Session:</td><td><input  class="form-control" name="session" value={{student.session}} type="text"></td></tr>
+                <tr><td>Roll:</td><td><input  class="form-control" name="roll" value={{student.class_roll}} type="number"></td></tr>
+                <tr><td>Subject:</td><td><input  class="form-control" value="{{department.subject}}" type="text"></td></tr>
+                <tr><td>Cq marks:</td><td><input  class="form-control" name="cq_marks" value={{grade.cq_marks}} type="number"><br>
+                {% for err in form.cq_marks.errors%} <small>{{err}}</small>{% endfor %}</td></tr>
+                <tr><td>Mcq marks:</td><td><input  class="form-control"  name="mcq_marks" value={{grade.mcq_marks}} type="number"><br>
+                {% for err in form.mcq_marks.errors%} <small>{{err}}</small>{% endfor %}</td></tr>
+
+                {% if department.group == 'SC' %}
+                <tr><td>Practical marks:</td><td><input  class="form-control"  name="practical_marks" value={{grade.practical_marks}} type="number"><br>
+                    {%endif%}
+                {% for err in form.practical_marks.errors%} <small>{{err}}</small>{% endfor %}</td></tr>
+            
+            </table>
+            <br>
+            <p align="center"><input class="btn btn-secondary btn-lg btn-block" type="submit"></p>
+        </form>
+    </div>
+    <div class="col-md-3">
+
+    </div>
+</div>
+
+
+
+
+{% endblock content %}
+
+{% block script %}
+<script>
+var element1 = document.getElementById("id_cq_marks");
+  element1.classList.add("form-control");
+var element2 = document.getElementById("id_mcq_marks");
+  element2.classList.add("form-control");
+
+</script>
+
+
+{% endblock %}

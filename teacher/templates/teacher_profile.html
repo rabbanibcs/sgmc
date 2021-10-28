@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+  {% block content %}
+
+        <div class='row'>
+            {% if messages %}
+            <div class="col-12 p-2 bg-secondary text-white text-center">
+
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </div>
+
+            {% endif %}
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p align="center"><img width="250" height="250" src="{{teacher.picture.url}}" class="img"></p>
+            </div>
+        </div>
+        <div class="row">
+        <div class="col-md-4">
+            <div >
+                <table class="table">
+                    <th class="text-center" colspan="2">Qualifications:</th>
+                    <tr><td>Honour's:</td><td>{{teacher.honours|capfirst}}</td></tr>
+                    <tr><td>Master's: </td><td>{{teacher.masters|capfirst}}</td></tr>
+                    <tr><td>Others:</td><td>{{teacher.others|capfirst}}</td></tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div >
+                {% if teacher %}
+                <table class="table ">
+                    <th class="text-center" colspan="2">Info:</th>
+                    <tr><td>Name: </td><td>{{teacher.user}}</td></tr>
+                    <tr><td>Father: </td><td>{{teacher.father}}</td></tr>
+                    <tr><td>Mother: </td><td>{{teacher.mother}}</td></tr>
+                    <tr><td>Designation: </td><td>{{teacher.designation}}</td></tr>
+                    <tr><td>Department: </td><td>{{teacher.subject}}</td></tr>
+                    <tr><td>BCS Batch: </td><td>{{teacher.BCS_batch}} th</td></tr>
+                    <tr><td>Date of Birth:</td><td>{{teacher.date_of_birth}}</td></tr>
+                </table>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div >
+                <table class="table">
+                <th class="text-center" colspan="2">Parmanent Address:</th>
+                <tr><td>District:</td><td>{{teacher.district|capfirst}}</td></tr>
+                <tr><td>Thana: </td><td>{{teacher.thana|capfirst}}</td></tr>
+                <tr><td>Post: </td><td>{{teacher.post|capfirst}}</td></tr>
+                <tr><td>Village:</td><td>{{teacher.village|capfirst}}</td></tr>
+                <tr><td>Phone</td><td>{{teacher.phone}}</td></tr>
+            </table>
+            </div>
+        </div>
+    </div>
+ {% endblock content %}
+
+
+

@@ -1,0 +1,61 @@
+
+
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="row justify-content-center mt-2" >
+    <div class="col-md-6">
+    <table class="table table-dark">
+        <tr>
+            <td>Groups</td><td colspan='2'>Sessions</td>
+        </tr>
+        <tr>
+            <td>Seience</td>
+            {% for session in data.sessions%}
+            <td><a href="?group=science&page=1&session={{ session.session }}">{{session.session}}</a></td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td >Humanities</td>
+            {% for session in data.sessions%}
+            <td><a href="?group=humanities&page=1&session={{ session.session }}">{{session.session}}</a></td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>Business Studies</td>
+            {% for session in data.sessions%}
+            <td><a href="?group=business studies&page=1&session={{ session.session }}">{{session.session}}</a></td>
+            {% endfor %}
+        </tr>
+    </table>
+
+        {% if students %}
+        <table class="table table-striped">
+            <h5 style="text-align: center;"><strong>Student's list ( {{total}} )</strong></h5>
+            <tr><th>Roll</th><th>Name</th><th>Group</th><th>Session</th></tr>
+            {% for student in students%}
+            <tr><td>{{student.class_roll}}</td>
+                <td><a href="{% url 'student_profile' student.user.id %}">{{student.user.name|capfirst}}</a></td>
+                <td>{{student.group|capfirst}}</td>
+                <td>{{student.session|capfirst}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+
+            <div >
+                {% if data.group %}
+                    {% if data.page|add:'0' > 1 %}
+                        <a href="?group={{ data.group }}&page={{ data.page|add:-1 }}&session={{data.session}}">&#60;Previous</a>
+                    {% endif %}
+                    {% if data.loaded|add:'0' < total%}
+                        <a href="?group={{ data.group }}&page={{ data.page|add:1 }}&session={{data.session}}"> &nbsp;Next&#62;</a>
+                    {% endif %}
+                {% endif %}
+            </div>
+    </div>
+</div>
+
+
+
+{% endblock content %}

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="">
+    <div class="row" style="margin-top:20px;">
+    
+    <div class="col-sm-7">
+        {% for event in events %}
+        <div class="card" style="width: 100%;">
+             <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item ">
+                  <img src="{{event.image1.url}}" class="d-block w-100" height="350" alt="...">
+                     <div class="carousel-caption d-none d-md-block">
+                       <h5 class="card-title">{{event.title}}</h5>
+                    </div>
+                </div>
+                <div class="carousel-item active">
+                  <img src="{{event.image2.url}}" class="d-block w-100" height="350" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5 class="card-title">{{event.title}}</h5>
+                    </div>
+                </div>
+                <div class="carousel-item ">
+                  <img src="{{event.image3.url}}" class="d-block w-100" height="350" alt="...">
+                     <div class="carousel-caption d-none d-md-block">
+                        <h5 class="card-title">{{event.title}}</h5>
+                    </div>
+                </div>
+                
+                
+              </div>
+            </div>
+            <div class="card-body">
+                <p class="card-text">{{event.description}}</p>
+                <a href="#" class="btn btn-primary">Detail...</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="col-sm-5">
+        <h3  align="center" id="notice">Notice Board</h3>
+        {% for notice in notices %}
+        <a href={% url 'collect_notice' notice.id %}><b>*{{notice.title}}</b></a> {{notice.created_on|date:"D d M Y"}}<br>
+        {% endfor %}
+
+
+    </div>
+</div>
+</div>
+
+
+
+
+
+{% endblock content %}
+

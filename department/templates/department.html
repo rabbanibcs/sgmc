@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h2 class="department_header">Department of {{subject}}</h2>
+<hr>
+<div class="row mt-2">
+    <div class="col-md-3 ">
+        <div>
+        {% if exams %}
+            <h6  >Result Published:</h6>
+            {% for exam in exams %}
+                {% if exam.is_published %}
+                    <a href="{% url 'all_students_result' subject exam.year exam.term  %}">{{exam.get_term_display}} Exam-{{exam.year}}</a><br>
+                {%endif %}
+            {% endfor%}
+        {% endif %}
+        </div>
+        <br>
+
+        {% if user.is_teacher and exams %}
+            <h6 >Marks entry:</h6>
+            {% for exam in exams %}
+                {% if exam.is_active %}
+                    {% if subject.group == 'HM' %}
+                    <a href="{% url 'marks' subject exam.term exam.year %}">{{exam.get_term_display}} Exam-{{exam.year}}</a><br>
+                    {%endif %}
+                    {% if subject.group == 'SC' %}
+                    <a href="{% url 'marks' subject exam.term exam.year %}">{{exam.get_term_display}} Exam-{{exam.year}}</a><br>
+                    {%endif %}
+                    {% if subject.group == 'BS' %}
+                    <a href="{% url 'marks' subject exam.term exam.year%}">{{exam.get_term_display}} Exam-{{exam.year}}</a><br>
+                {%endif %}
+            {%endif %}
+            {% endfor%}
+        {%endif %}
+
+
+    </div>
+    <div class="col-md-6">
+        <h3 class="text-center">Notices</h3>
+        {% for notice in notices %}
+
+            {% comment %} <img src='{{notice.image.url}}' width='100%'> {% endcomment %}
+            <a href='{% url 'collect_notice' notice.id %}'>*{{notice.title}}</a><br>
+            
+            
+        {% endfor %}
+    </div>
+    <div class="col-md-3">
+        <h6 class="text-center" >List of Teachers:</h6><br>
+
+        <ul class="list-group">
+            {% for teacher in teachers %}
+            <li ><a href="{% url 'teacher_profile' teacher.user.id %}">{{teacher}}</a></li>
+            {%endfor%}
+        </ul>
+    </div>
+</div>
+</div>
+
+{% endblock content %}
+

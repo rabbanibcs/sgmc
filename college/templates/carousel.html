@@ -1,0 +1,18 @@
+    <div class="row">
+      <div class="col" >
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+
+          <div class="carousel-item active">
+            <img src="/carousel/college1.jpg " class="d-block w-100" alt="...">
+          </div>
+          
+        {% for carousel in carousels %}
+        <div class="carousel-item  ">
+            <img src="{{carousel.image.url}}" class="d-block w-100" alt="...">
+          </div>
+        {% endfor %}
+        </div>
+        </div>
+      </div>
+    </div>

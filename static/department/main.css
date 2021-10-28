@@ -1,0 +1,133 @@
+
+.container{
+    background-color:#49d9de;
+ 
+ }
+ .container_height{
+    min-height:150vh;
+ 
+ }
+ 
+ 
+
+.nav-link{
+    padding: 0px, 10px;
+    color: rgb(222, 234, 238);
+    font-weight: 600;
+    font-size: 22px;
+}
+.navbar-toggler-icon{
+   background-color: yellowgreen;
+}
+
+a.student-list-link{
+
+    background-color: #343a40;
+    color: white;
+    font-size: 25px;
+    padding: 5px;
+
+
+}
+
+
+#notice{
+    background-color:#7bd8e0;
+    padding:10px;
+    border-radius:5px;
+}
+
+
+ul.list-group{
+    list-style: none;
+}
+
+.img{
+    border-radius: 50%;
+}
+
+.department_header{
+    text-align: center;
+     background-color: rgb(165, 125, 202);
+     padding: 10px;
+     font-weight: bold;
+}
+.profile{
+    display: none;
+}
+
+
+.pagination{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+form.bg-light {
+    background-color: #bff5f3!important;
+    padding:15px;
+    margin-bottom:20px;
+    border-radius:5px;
+}
+
+div.infoForm{
+    padding:15px;
+    background-color:  #bff5f3;
+    margin:10px;
+    border-radius: 5px;
+}
+.footer{
+    background-color: #343a40;
+    color: white;
+
+}
+
+
+
+@media only screen and (max-width: 600px) {
+    body{
+        text-align: center;
+    }
+    .department_header{
+        text-align: center;
+         background-color: rgb(165, 125, 202);
+         padding: 10px;
+         font-weight: bold;
+         font-size: 25px;
+    }
+    .profile-img{
+        display: none;
+    }
+    .profile{
+        display: block;
+    }
+    a.student-list-link{
+
+        /* background-color: #343a40; */
+        /* color: white; */
+        font-size: 20px;
+        /* padding: 5px; */
+    
+    
+    }
+    .full-width{
+        width: 100%;
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

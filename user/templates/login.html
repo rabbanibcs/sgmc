@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="row justify-content-center mt-5">
+    <div class=" col-md-4">
+        <form method="POST">
+        {% csrf_token %}
+            {% for field in form %}
+            <div class="fieldWrapper mb-3">
+            {{ field.errors }}
+            {{ field }}
+            </div>
+            {% endfor %}
+           {% comment %} {{form|crispy}} {% endcomment %}
+            <button class="btn btn-outline-info" type="submit">
+               Login
+            </button>
+            <small class="text-muted">
+            <a class="ml-2" href="#">Forgot password?</a>
+            </small>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}
+{% block script %}
+<script>
+document.getElementById("id_username").placeholder = "Type Email here..";
+document.getElementById("id_username").classList.add('form-control')
+document.getElementById("id_password").placeholder = "Type Password here..";
+document.getElementById("id_password").classList.add('form-control')
+
+
+</script>
+{% endblock %}

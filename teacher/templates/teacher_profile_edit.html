@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+  {% block content %}
+    <div class="row justify-content-center">
+        <div class="col-sm-6">
+            <div class="infoForm">
+                <form id="infoForm" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form|crispy}}
+                <p align="center" >
+                    <input style="background-color:#8648db;" class="btn btn-primary" value="Submit Profile" type="submit">
+                </p>
+            </form>
+            </div>
+
+        </div>
+    </div>
+
+ {% endblock content %}
+
+<script>
+
+
+</script>
+
