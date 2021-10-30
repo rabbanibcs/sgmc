@@ -7,7 +7,7 @@ exams = (('HY', 'Half Yearly'), ('Y', 'Yearly'),
 
 class Examination(models.Model):
     year = models.PositiveIntegerField()
-    term = models.CharField(choices=exams, max_length=20)
+    term = models.CharField(choices=exams, max_length=2)
     session = models.CharField(max_length=9)
     is_active = models.BooleanField(default=True)
     is_published = models.BooleanField(default=False)
@@ -66,3 +66,13 @@ class Grade(models.Model):
             point=0
         result={'grade':grade,'point':point}
         return result
+
+
+    def get_dict(self):
+        return {
+
+            'cq_marks':self.cq_marks,
+            'mcq_marks':self.mcq_marks,
+            'practical_marks':self.practical_marks,
+
+        }

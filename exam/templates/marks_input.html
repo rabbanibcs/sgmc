@@ -10,19 +10,21 @@
             {% csrf_token %}
             <table class="table table-hover">
                 <tr><td>Year of Examination:</td><td><input  class="form-control" value={{examination.year}} type="number"></td></tr>
-                <tr><td>Term:</td><td><input  class="form-control" value="{{examination.get_term_display|capfirst }}" type="text"></td></tr>
+                <tr><td>Term:</td><td><input class="form-control" value="{{examination.get_term_display|capfirst }}" type="text"></td></tr>
                 <tr><td>Student's name:</td><td><input  class="form-control" value="{{student.user.name}}" type="text"></td></tr>
                 <tr><td>Session:</td><td><input  class="form-control" name="session" value={{student.session}} type="text"></td></tr>
-                <tr><td>Roll:</td><td><input  class="form-control" name="roll" value={{student.class_roll}} type="number"></td></tr>
-                <tr><td>Subject:</td><td><input  class="form-control" value="{{department.subject}}" type="text"></td></tr>
-                <tr><td>Cq marks:</td><td><input  class="form-control" name="cq_marks" value={{grade.cq_marks}} type="number"><br>
+                <tr><td>Roll:</td><td><input id='roll' class="form-control" name="roll" value={{student.class_roll}} type="number"></td></tr>
+                <tr><td>Subject:</td><td><input id='subject'  class="form-control" value="{{department.subject}}" type="text"></td></tr>
+                <tr><td>Cq marks:</td><td><input id='cq_marks'  class="form-control" name="cq_marks" value={{grade.cq_marks}} type="number"><br>
                 {% for err in form.cq_marks.errors%} <small>{{err}}</small>{% endfor %}</td></tr>
-                <tr><td>Mcq marks:</td><td><input  class="form-control"  name="mcq_marks" value={{grade.mcq_marks}} type="number"><br>
+                <tr><td>Mcq marks:</td><td><input id='mcq_marks'  class="form-control"  name="mcq_marks" value={{grade.mcq_marks}} type="number"><br>
                 {% for err in form.mcq_marks.errors%} <small>{{err}}</small>{% endfor %}</td></tr>
 
                 {% if department.group == 'SC' %}
-                <tr><td>Practical marks:</td><td><input  class="form-control"  name="practical_marks" value={{grade.practical_marks}} type="number"><br>
-                    {%endif%}
+                  <tr><td>Practical marks:</td><td><input id='practical_marks' class="form-control"  name="practical_marks" value={{grade.practical_marks}} type="number"><br>
+                {% else %}
+                  <input hidden id='practical_marks' class="form-control"  name="practical_marks" value={{grade.practical_marks}} type="number">
+                {% endif %}
                 {% for err in form.practical_marks.errors%} <small>{{err}}</small>{% endfor %}</td></tr>
             
             </table>
@@ -30,8 +32,18 @@
             <p align="center"><input class="btn btn-secondary btn-lg btn-block" type="submit"></p>
         </form>
     </div>
-    <div class="col-md-3">
 
+    <input hidden value={{examination.id}} id='exam_id'>
+    <div class="col-md-3">
+         <br> <p>
+      {% for entry in entries_done %}
+        {% if entry.roll == student.class_roll %}
+          <span class="badge bg-warning"> {{ entry.roll}}</span>
+        {% else %}
+          <span class="badge bg-primary"> {{ entry.roll}}</span>
+        {% endif %}
+      {% endfor %}
+      </p>
     </div>
 </div>
 
@@ -41,13 +53,43 @@
 {% endblock content %}
 
 {% block script %}
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"> </script>
+
 <script>
-var element1 = document.getElementById("id_cq_marks");
-  element1.classList.add("form-control");
-var element2 = document.getElementById("id_mcq_marks");
-  element2.classList.add("form-control");
+
+const  exam_id = document.getElementById("exam_id").value;
+const  roll = document.getElementById("roll")
+
+roll.addEventListener('input', updateValue);
+
+function updateValue(e){
+const  r = document.getElementById("roll").value;
+const  subject = document.getElementById("subject").value;
+
+ $.ajax({                    
+        url: '/exam/each/',     
+        data: {
+          
+          'roll': r,
+          'exam_id':exam_id,
+          'subject':subject,
+
+        },
+        success: function (data) {  
+          //console.log(data.cq_marks) ;
+          document.getElementById("cq_marks").value=data.cq_marks;
+          document.getElementById("mcq_marks").value=data.mcq_marks;
+          document.getElementById("practical_marks").value=data.practical_marks;
+
+        },
+          error: function(data){
+            console.log(data)
+          }
+
+      }); 
+
+}
 
 </script>
-
 
 {% endblock %}

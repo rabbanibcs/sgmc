@@ -12,28 +12,28 @@
         <tr>
             <td>Seience</td>
             {% for session in data.sessions%}
-            <td><a href="?group=science&page=1&session={{ session.session }}">{{session.session}}</a></td>
+            <td><a href="?group=science&session={{ session.session }}">{{session.session}}</a></td>
             {% endfor %}
         </tr>
         <tr>
             <td >Humanities</td>
             {% for session in data.sessions%}
-            <td><a href="?group=humanities&page=1&session={{ session.session }}">{{session.session}}</a></td>
+            <td><a href="?group=humanities&session={{ session.session }}">{{session.session}}</a></td>
             {% endfor %}
         </tr>
         <tr>
             <td>Business Studies</td>
             {% for session in data.sessions%}
-            <td><a href="?group=business studies&page=1&session={{ session.session }}">{{session.session}}</a></td>
+            <td><a href="?group=business studies&session={{ session.session }}">{{session.session}}</a></td>
             {% endfor %}
         </tr>
     </table>
 
-        {% if students %}
+        {% if page_obj %}
         <table class="table table-striped">
             <h5 style="text-align: center;"><strong>Student's list ( {{total}} )</strong></h5>
             <tr><th>Roll</th><th>Name</th><th>Group</th><th>Session</th></tr>
-            {% for student in students%}
+            {% for student in page_obj%}
             <tr><td>{{student.class_roll}}</td>
                 <td><a href="{% url 'student_profile' student.user.id %}">{{student.user.name|capfirst}}</a></td>
                 <td>{{student.group|capfirst}}</td>
@@ -51,6 +51,10 @@
                     {% if data.loaded|add:'0' < total%}
                         <a href="?group={{ data.group }}&page={{ data.page|add:1 }}&session={{data.session}}"> &nbsp;Next&#62;</a>
                     {% endif %}
+                    
+                    {% comment %} pagination {% endcomment %}
+                    {% include 'stu_list_paginator.html' %}
+
                 {% endif %}
             </div>
     </div>

@@ -8,6 +8,10 @@ from gallery.models import *
 
 
 def home(request):
+
+    for key, value in request.META.items():
+        print(key,'---',value)
+
     events = Event.objects.order_by('-published_date')[:3]
     notices=NoticeBoard.objects.all().order_by('-created_on')
     return render(request, 'home.html',{'events':events,'notices':notices})

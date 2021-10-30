@@ -1,6 +1,5 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
-# from .helpers import *
 from student.models import *
 from user.models import User
 from .forms import *
@@ -33,7 +32,6 @@ def upload_file(request):
             if not result:
                 message='Sorry. Plz check column names in your file '
                 return render(request, 'upload.html', {'form': form,'message':message})
-
 
             duration=time.time()-start_time
             # print(duration)
@@ -104,21 +102,23 @@ def student_profile_edit(request, pk):
     return render(request, 'student_profile_edit.html', context)
 
 
+from django.core.paginator import Paginator
 
 @login_required
 def students_list(request):
-    page=request.GET.get('page',1)
+    page_num=request.GET.get('page',1)
+    print(page_num,'page-num')
+
     session=request.GET.get('session')
-    total_items=int(page)*25
     sessions=Student.objects.all().values('session').distinct()[0:3]
-    # print('session',session)
-    initial=total_items-25
     group=request.GET.get('group')
     
-    data={'group':group,'page':page,'loaded':total_items,'sessions':sessions,'session':session}
+    data={'group':group,'sessions':sessions,'session':session}
     # print(data)
     students = Student.objects.filter(group=group,session=session).order_by('class_roll')
-    total_students=len(students)
-    students=students[initial:total_items]
-    return render(request, 'students_list.html',{'students':students,'data':data,'total':total_students})
+
+    p = Paginator(students, 5)
+    page_obj=p.page(page_num)
+
+    return render(request, 'students_list.html',{'page_obj':page_obj,'data':data})
 

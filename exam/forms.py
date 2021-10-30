@@ -12,8 +12,8 @@ class MarksForm(forms.Form):
     mcq_marks = forms.IntegerField(max_value=40, min_value=0)
 
 
-exams = (('half yearly', 'Half Yearly'), ('yearly', 'Yearly'),
-         ('pre test', 'Pre Test'), ('test', 'Test'), ('others', 'Others'))
+exams = (('HY', 'Half Yearly'), ('Y', 'Yearly'),
+         ('PT', 'Pre Test'), ('T', 'Test'), ('O', 'Others'))
 
 
 class ExamCreation(forms.Form):

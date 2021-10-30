@@ -11,37 +11,40 @@
         {% endif%}
       </h5>
   </div>
-<div class="table-responsive">
-  <table class="table">
-    <thead>
-      <tr>
-          <th scope="col">#</th>
-          <th scope="col">Roll</th>
-          <th scope="col">CQ Marks</th>
-          <th scope="col">MCQ Marks</th>
-          {% comment %} {% if subject.group == 'science' %} {% endcomment %}
-            <th scope="col">Practical Marks</th>
-          {% comment %} {% endif %} {% endcomment %}
-          <th scope="col">Total Marks</th>
-          <th scope="col">Grade</th>
-      </tr>
-    </thead>
-    <tbody>
-        {% for result in results %}
-      <tr>
-          <th scope="row">{{forloop.counter}}</th>
-          <td><a href="{% url 'student_result' session result.roll exam.year exam.term %}">{{result.roll}}</a></td>
-          <td>{{result.cq_marks}}</td>
-          <td>{{result.mcq_marks}}</td>
-          {% comment %} {% if subject.group == 'SC' %} {% endcomment %}
-            <td>{{result.practical_marks|default:'0'}}</td>
-          {% comment %} {% endif %} {% endcomment %}
-          <td>{{result.total_marks}}</td>
-          <td>{{result.grade}}</td>
-      </tr>
-        {% endfor %}
-    </tbody>
-  </table>
-</div>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Roll</th>
+            <th scope="col">CQ Marks</th>
+            <th scope="col">MCQ Marks</th>
+            {% comment %} {% if subject.group == 'science' %} {% endcomment %}
+              <th scope="col">Practical Marks</th>
+            {% comment %} {% endif %} {% endcomment %}
+            <th scope="col">Total Marks</th>
+            <th scope="col">Grade</th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for result in page_obj %}
+        <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td><a href="{% url 'student_result' session result.roll exam.year exam.term %}">{{result.roll}}</a></td>
+            <td>{{result.cq_marks}}</td>
+            <td>{{result.mcq_marks}}</td>
+            {% comment %} {% if subject.group == 'SC' %} {% endcomment %}
+              <td>{{result.practical_marks|default:'0'}}</td>
+            {% comment %} {% endif %} {% endcomment %}
+            <td>{{result.total_marks}}</td>
+            <td>{{result.grade}}</td>
+        </tr>
+          {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+
+  {% include 'paginator.html' %}
 </div>
  {% endblock content %}
